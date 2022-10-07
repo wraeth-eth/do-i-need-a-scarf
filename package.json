@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "do-i-need-a-scarf",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -26,10 +26,13 @@
     "@types/node": "18.6.3",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.39.0",
+    "@typescript-eslint/parser": "^5.39.0",
     "autoprefixer": "^10.4.12",
     "dotenv": "^16.0.3",
     "eslint": "^8.21.0",
     "eslint-config-next": "12.2.3",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "postcss": "^8.4.17",
     "prettier": "2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",

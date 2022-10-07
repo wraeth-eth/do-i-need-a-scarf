@@ -1,16 +1,5 @@
-import { Button } from 'antd'
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import {
-  ChangeEventHandler,
-  EventHandler,
-  ReactNode,
-  SyntheticEvent,
-  useEffect,
-  useState,
-} from 'react'
-import styles from '../styles/Home.module.css'
+import { ChangeEventHandler, ReactNode, useState } from 'react'
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete'
 import useOnclickOutside from 'react-cool-onclickoutside'
 import { ExternalLink } from '@components/ExternalLink'
@@ -53,7 +42,6 @@ const Home: NextPage = () => {
   const [weatherData, setWeatherData] = useState<WeatherData>()
   const {
     ready,
-    value,
     suggestions: { status, data },
     setValue,
     clearSuggestions,
@@ -74,10 +62,9 @@ const Home: NextPage = () => {
       clearSuggestions()
       const results = await getGeocode({ address: description })
       const { lat, lng } = getLatLng(results[0])
-      console.log('📍 Coordinates: ', { lat, lng })
-      console.log('📍 Loading Data for: ', { lat, lng })
+      console.info('📍 Coordinates: ', { lat, lng })
       const data = await queryWeather({ latitude: lat, longitude: lng })
-      console.log('🌡 Data loaded: ', { data })
+      console.info('🌡 Data loaded: ', { ...data })
       setWeatherData(data)
     }
 
@@ -95,7 +82,6 @@ const Home: NextPage = () => {
       )
     })
 
-  console.log(weatherData)
   return (
     <>
       <main>
