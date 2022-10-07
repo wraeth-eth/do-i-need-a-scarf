@@ -5,6 +5,8 @@ import useOnclickOutside from 'react-cool-onclickoutside'
 import { queryWeather, WeatherData } from 'utils/queryWeather'
 import { Input } from '@components/Input'
 import { Footer } from '@components/Footer'
+import { GitHub } from '@components/icons/GitHub'
+import { Spin } from '@components/icons'
 
 const Home: NextPage = () => {
   const [weatherData, setWeatherData] = useState<WeatherData>()
@@ -49,6 +51,14 @@ const Home: NextPage = () => {
         </li>
       )
     })
+
+  if (!ready) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <Spin />
+      </div>
+    )
+  }
 
   return (
     <>
