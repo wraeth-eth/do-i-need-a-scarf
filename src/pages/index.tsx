@@ -13,7 +13,7 @@ const Home: NextPage = () => {
     suggestions: { status, data },
     setValue,
     clearSuggestions,
-  } = usePlacesAutocomplete({ requestOptions: {}, debounce: 500, callbackName: 'initMap' })
+  } = usePlacesAutocomplete({ requestOptions: {}, debounce: 300, callbackName: 'initMap' })
 
   const ref = useOnclickOutside(() => {
     clearSuggestions()
@@ -57,7 +57,7 @@ const Home: NextPage = () => {
           <h1 className="capitalize">Do I need a scarf</h1>
           <div ref={ref}>
             <div className="px-4 pt-6 sm:px-0">
-              <Input name="address" label="Address" disabled={!ready} onChange={handleInput} />
+              <Input name="scarfInput" label="Address" disabled={!ready} onChange={handleInput} />
             </div>
             {status === 'OK' && (
               <ul className="rounded-b-lg bg-gray-500 py-1">{renderSuggestions()}</ul>
