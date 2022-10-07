@@ -1,8 +1,5 @@
 import axios from 'axios'
-export interface WeatherData {
-  feelsLike: number
-  windSpeed: number
-}
+import { WeatherData } from 'types'
 
 export const queryWeather = async ({
   latitude,
@@ -12,5 +9,5 @@ export const queryWeather = async ({
   longitude: number
 }) => {
   const { data } = await axios.post('/api/weather', { latitude, longitude })
-  return data
+  return data as WeatherData
 }

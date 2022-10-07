@@ -1,8 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { WeatherData } from 'utils/queryWeather'
 import Cors from 'cors'
 import { runMiddleware } from 'providers/middleware'
+import { WeatherData } from 'types'
 
 const cors = Cors({ methods: ['POST'] })
 
