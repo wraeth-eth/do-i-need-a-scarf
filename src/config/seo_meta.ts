@@ -1,12 +1,12 @@
 export default {
-  title: 'High Seas Gambling',
-  titleTemplate: '%s - High Seas Gambling',
-  description: "Ye all gamblin'",
+  title: 'Do I need a scarf',
+  titleTemplate: '%s - Do I need a scarf',
+  description: "Do I or don't I?'",
   twitter: {
-    handle: '@highseasgambling',
-    site: '@highseasgambling',
-    creator: '@highseasgambling',
+    handle: '@lachmcculloch',
+    site: '@lachmcculloch',
+    creator: '@lachmcculloch',
     cardType: 'summary_large_image',
-    image: 'exmaple.com/image',
+    image: 'example.com/image',
   },
 }

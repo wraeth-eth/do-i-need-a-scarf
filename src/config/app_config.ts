@@ -1,3 +1,3 @@
 export default {
-  appName: 'High Seas Gambling',
+  appName: 'Do I need a scarf',
 }

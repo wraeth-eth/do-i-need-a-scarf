@@ -1,3 +1,4 @@
+export * from './GoogleMapsScript'
 export * from './Head'
 export * from './OpenGraphMetaTags'
 export * from './SEO'
