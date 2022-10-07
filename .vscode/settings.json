@@ -1,0 +1,7 @@
+{
+    "exportall.config.folderListener": [
+        "/src/components/common",
+        "/src/components/RainbowKit",
+        "/src/providers/chainProvider"
+    ]
+}
