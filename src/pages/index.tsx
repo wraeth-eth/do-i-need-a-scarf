@@ -57,7 +57,7 @@ const Home: NextPage = () => {
     suggestions: { status, data },
     setValue,
     clearSuggestions,
-  } = usePlacesAutocomplete({ requestOptions: {}, debounce: 500 })
+  } = usePlacesAutocomplete({ requestOptions: {}, debounce: 500, callbackName: 'initMap' })
 
   const ref = useOnclickOutside(() => {
     clearSuggestions()
