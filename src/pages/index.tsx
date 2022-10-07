@@ -2,11 +2,9 @@ import type { NextPage } from 'next'
 import { ChangeEventHandler, useState } from 'react'
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete'
 import useOnclickOutside from 'react-cool-onclickoutside'
-import { ExternalLink } from '@components/ExternalLink'
-import { Twitter } from '@components/icons/Twitter'
 import { queryWeather, WeatherData } from 'utils/queryWeather'
-import { GitHub } from '@components/icons/GitHub'
 import { Input } from '@components/Input'
+import { Footer } from '@components/Footer'
 
 const Home: NextPage = () => {
   const [weatherData, setWeatherData] = useState<WeatherData>()
@@ -74,19 +72,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </main>
-      <footer className="fixed bottom-0 flex w-screen justify-center p-2">
-        <div className="flex flex-col gap-4 text-center">
-          <div className="flex gap-3">
-            <ExternalLink href="https://github.com/wraeth-eth/do-i-need-a-scarf">
-              <GitHub className="w-6 fill-white" />
-            </ExternalLink>
-            <ExternalLink href="https://twitter.com/lachmcculloch">
-              <Twitter className="w-6 fill-white" />
-            </ExternalLink>
-          </div>
-          2022
-        </div>
-      </footer>
+      <Footer />
     </>
   )
 }
