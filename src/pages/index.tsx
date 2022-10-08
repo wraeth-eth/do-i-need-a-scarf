@@ -25,7 +25,11 @@ const Home: NextPage = () => {
     >
       <main>
         <div className="mx-auto max-w-2xl py-6 px-6">
-          <h1 className="text-xl capitalize">Do I need a scarf</h1>
+          <h1 className="text-xl capitalize">🧣 Do I need a scarf</h1>
+          <p className="px-4 pt-6">
+            Input your address (or a friends) to discover if you should venture outside with
+            something warmer.
+          </p>
           <div className="px-4 pt-6 md:px-0">
             <AddressInput />
           </div>
