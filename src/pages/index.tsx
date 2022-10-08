@@ -8,6 +8,7 @@ import { WeatherContext } from 'contexts'
 
 const Home: NextPage = () => {
   const [weather, setWeather] = useState<WeatherData>()
+  const [resultLoading, setResultLoading] = useState<boolean>(false)
   const { ready } = usePlacesAutocomplete({ requestOptions: {}, debounce: 300 })
 
   if (!ready) {
@@ -19,7 +20,9 @@ const Home: NextPage = () => {
   }
 
   return (
-    <WeatherContext.Provider value={{ weather, setWeather }}>
+    <WeatherContext.Provider
+      value={{ weather, setWeather, loading: resultLoading, setLoading: setResultLoading }}
+    >
       <main>
         <div className="mx-auto max-w-4xl py-6 sm:px-6 lg:px-8">
           <h1 className="capitalize">Do I need a scarf</h1>
@@ -27,11 +30,15 @@ const Home: NextPage = () => {
             <AddressInput />
           </div>
           <div className="pt-10">
-            {weather
-              ? weather.feelsLike < 12
-                ? 'Absolutely - you should wear a scarf'
-                : 'No, you should be okay'
-              : null}
+            {resultLoading ? (
+              <Spin />
+            ) : weather ? (
+              weather.feelsLike < 12 ? (
+                'Absolutely - you should wear a scarf'
+              ) : (
+                'No, you should be okay'
+              )
+            ) : null}
           </div>
         </div>
       </main>

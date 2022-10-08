@@ -7,7 +7,7 @@ import { queryWeather } from 'utils/queryWeather'
 
 export const AddressInput = () => {
   const [input, setInput] = useState<string>('')
-  const { setWeather } = useWeather()
+  const { setWeather, setLoading } = useWeather()
   const {
     ready,
     suggestions: { status, data },
@@ -21,17 +21,19 @@ export const AddressInput = () => {
 
   const handleInput: ChangeEventHandler<HTMLInputElement> = useCallback(
     (e) => {
+      setWeather(undefined) // Clear state
       setInput(e.target.value)
       setValue(e.target.value)
     },
-    [setValue]
+    [setValue, setWeather]
   )
 
   const handleCancel: VoidFunction = useCallback(() => {
     clearSuggestions()
     setInput('')
     setValue('')
-  }, [clearSuggestions, setValue])
+    setWeather(undefined)
+  }, [clearSuggestions, setValue, setWeather])
 
   const handleSelect =
     ({ description }: { description: string }) =>
@@ -39,6 +41,7 @@ export const AddressInput = () => {
       setInput(description)
       setValue(description, false)
       clearSuggestions()
+      setLoading(true)
 
       const results = await getGeocode({ address: description })
       const { lat, lng } = getLatLng(results[0])
@@ -46,6 +49,7 @@ export const AddressInput = () => {
       const data = await queryWeather({ latitude: lat, longitude: lng })
       console.info('🌡 Data loaded: ', { ...data })
       setWeather(data)
+      setLoading(false)
     }
 
   const renderSuggestions = () =>
