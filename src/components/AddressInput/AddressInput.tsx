@@ -60,14 +60,16 @@ export const AddressInput = () => {
       } = suggestion
 
       return (
-        <li className="px-2.5 py-0.5" key={place_id} onClick={handleSelect(suggestion)}>
+        <li className="py-1 first:pt-0 last:pb-0" key={place_id} onClick={handleSelect(suggestion)}>
           <strong>{main_text}</strong> <small>{secondary_text}</small>
         </li>
       )
     })
 
+  const [expanded, setExpanded] = useState<boolean>(false)
+
   return (
-    <div ref={ref}>
+    <div ref={ref} onClick={() => setExpanded(!expanded)}>
       <Input
         name="scarfInput"
         label="Address"
@@ -76,7 +78,13 @@ export const AddressInput = () => {
         onChange={handleInput}
         onCancel={handleCancel}
       />
-      {status === 'OK' && <ul className="rounded-b-lg bg-gray-500 py-1">{renderSuggestions()}</ul>}
+      <ul
+        className={`origin-top  transform rounded-b-lg bg-gray-500 px-4 pt-2 pb-4 transition duration-300 ease-scarf ${
+          status === 'OK' ? 'scale-y-100' : 'scale-y-0'
+        }`}
+      >
+        {renderSuggestions()}
+      </ul>
     </div>
   )
 }

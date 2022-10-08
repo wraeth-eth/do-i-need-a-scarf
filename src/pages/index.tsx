@@ -33,7 +33,7 @@ const Home: NextPage = () => {
           <div className="px-4 pt-6 md:px-0">
             <AddressInput />
           </div>
-          <div className="pt-10">
+          <div className="m-auto flex w-full items-center justify-center pt-10">
             {resultLoading ? (
               <Spin />
             ) : weather ? (
