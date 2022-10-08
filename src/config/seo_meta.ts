@@ -8,6 +8,6 @@ export default {
     site: '@lachmcculloch',
     creator: '@lachmcculloch',
     cardType: 'summary',
-    image: 'example.com/image',
+    image: '/seo.svg',
   },
 }
