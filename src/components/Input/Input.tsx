@@ -1,25 +1,42 @@
-import { ReactNode, ChangeEventHandler } from 'react'
+import { CloseCircleFilled } from '@components/icons/CloseCircleFilled'
+import { ReactNode, ChangeEventHandler, useCallback, useState } from 'react'
+import { stopPropagation } from 'utils/stopPropogation'
 
 export const Input = ({
   name,
   label,
+  value,
   disabled,
   onChange,
+  onCancel,
 }: {
   name: string
   label: ReactNode
+  value?: string
   disabled?: boolean
   onChange?: ChangeEventHandler<HTMLInputElement>
+  onCancel?: VoidFunction
 }) => {
+  const [_input, _setInput] = useState<string>('')
+  const input = value ?? _input
+
+  const handleInput: ChangeEventHandler<HTMLInputElement> = useCallback(
+    (e) => {
+      _setInput(e.target.value)
+      onChange?.(e)
+    },
+    [onChange]
+  )
   return (
     <div className="relative">
       <input
         type="text"
         id={name}
         className="border-1 peer block w-full appearance-none rounded-t-lg border-gray-300 bg-transparent px-2.5 pb-2.5 pt-4 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500"
+        value={input}
         placeholder=" "
         disabled={disabled}
-        onChange={onChange}
+        onChange={handleInput}
       />
       <label
         htmlFor={name}
@@ -27,6 +44,12 @@ export const Input = ({
       >
         {label}
       </label>
+      {onCancel && !!input.length && (
+        <CloseCircleFilled
+          className="absolute top-1/2 right-0 mr-3 w-5 -translate-y-1/2 -translate-x-1/2 transform cursor-pointer fill-white"
+          onClick={stopPropagation(onCancel)}
+        />
+      )}
     </div>
   )
 }
