@@ -24,9 +24,9 @@ const Home: NextPage = () => {
       value={{ weather, setWeather, loading: resultLoading, setLoading: setResultLoading }}
     >
       <main>
-        <div className="mx-auto max-w-4xl py-6 sm:px-6 lg:px-8">
-          <h1 className="capitalize">Do I need a scarf</h1>
-          <div className="px-4 pt-6 sm:px-0">
+        <div className="mx-auto max-w-2xl py-6 px-6">
+          <h1 className="text-xl capitalize">Do I need a scarf</h1>
+          <div className="px-4 pt-6 md:px-0">
             <AddressInput />
           </div>
           <div className="pt-10">
