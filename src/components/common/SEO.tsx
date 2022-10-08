@@ -49,11 +49,10 @@ export const SEO: FC<Props> = ({ url, title, description, twitter, robots, child
         siteName={config.title}
         image={{
           src:
-            (process.env.NEXT_PUBLIC_BASE_URL ? process.env.NEXT_PUBLIC_BASE_URL : '/') +
-            '/scarf.png',
-          type: 'image/svg',
-          width: '2870',
-          height: '1245',
+            (process.env.NEXT_PUBLIC_BASE_URL ? process.env.NEXT_PUBLIC_BASE_URL : '/') + '/og.png',
+          type: 'image/png',
+          width: '1440',
+          height: '1440',
         }}
       />
 
